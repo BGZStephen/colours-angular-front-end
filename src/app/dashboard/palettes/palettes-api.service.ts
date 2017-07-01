@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http"
+import { environment } from "../../../environments/environment"
 
 @Injectable()
 export class PalettesApiService {
@@ -9,10 +10,13 @@ export class PalettesApiService {
   ) { }
 
   user: any;
-  baseUrl: string = ""
+  baseUrl: string = environment.coloursApiUrl
 
   addPaletteItem(paletteObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     paletteObject.createdBy = JSON.parse(this.user)._id
     return this.http.post(this.baseUrl + "colours/createForPalette", paletteObject)
     .map(res => res.json())
@@ -20,6 +24,9 @@ export class PalettesApiService {
 
   deletePaletteItem(paletteObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     paletteObject.createdBy = JSON.parse(this.user)._id
     return this.http.post(this.baseUrl + "colours/deleteFromPalette", paletteObject)
     .map(res => res.json())
@@ -27,6 +34,9 @@ export class PalettesApiService {
 
   createPalette(paletteObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     paletteObject.createdBy = JSON.parse(this.user)._id
     return this.http.post(this.baseUrl + "palettes/create", paletteObject)
     .map(res => res.json())
@@ -34,20 +44,26 @@ export class PalettesApiService {
 
   deletePalette(paletteObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     paletteObject.userId = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "palettes/deleteOne", paletteObject)
+    return this.http.post(this.baseUrl + "/palettes/deleteOne", paletteObject)
     .map(res => res.json())
   }
 
   getPaletteById(paletteObject) {
-    return this.http.post(this.baseUrl + "palettes/getById", paletteObject)
+    return this.http.post(this.baseUrl + "/palettes/getById", paletteObject)
     .map(res => res.json())
   }
 
   getPalettesByUserId() {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     let userObject = {"createdBy": JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "palettes/getByUserId", userObject)
+    return this.http.post(this.baseUrl + "/palettes/getByUserId", userObject)
     .map(res => res.json())
   }
 
@@ -56,7 +72,10 @@ export class PalettesApiService {
   }
 
   updatePalette(paletteObject) {
-    return this.http.post(this.baseUrl + "palettes/update", paletteObject)
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
+    return this.http.post(this.baseUrl + "/palettes/update", paletteObject)
     .map(res => res.json())
   }
 

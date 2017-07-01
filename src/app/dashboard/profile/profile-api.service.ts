@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http"
+import { environment } from "../../../environments/environment"
 
 @Injectable()
 export class ProfileApiService {
@@ -12,12 +13,15 @@ export class ProfileApiService {
 
   user: any;
   authToken: any;
-  baseUrl: string = ""
+  baseUrl: string = environment.coloursApiUrl
 
   getCurrentUser() {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     let userObject = {"_id": JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "users/getById", userObject)
+    return this.http.post(this.baseUrl + "/users/getById", userObject)
     .map(res => res.json())
   }
 
@@ -28,15 +32,21 @@ export class ProfileApiService {
 
   updateProfile(userObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     userObject._id = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "users/update", userObject)
+    return this.http.post(this.baseUrl + "/users/update", userObject)
     .map(res => res.json())
   }
 
   updatePassword(userObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     userObject._id = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "users/updatePassword", userObject)
+    return this.http.post(this.baseUrl + "/users/updatePassword", userObject)
     .map(res => res.json())
   }
 

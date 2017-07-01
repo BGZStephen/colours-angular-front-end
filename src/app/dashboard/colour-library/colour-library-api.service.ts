@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http"
+import { environment } from "../../../environments/environment"
 
 @Injectable()
 export class ColourLibraryApiService {
@@ -10,7 +11,7 @@ export class ColourLibraryApiService {
 
   user: any;
   authToken: any;
-  baseUrl: string = ""
+  baseUrl: string = environment.coloursApiUrl
 
   loadToken() {
     this.authToken = localStorage.getItem('token')
@@ -19,36 +20,51 @@ export class ColourLibraryApiService {
 
   addColour(colourLibraryObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     colourLibraryObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "colours/createForLibrary", colourLibraryObject)
+    return this.http.post(this.baseUrl + "/colours/createForLibrary", colourLibraryObject)
     .map(res => res.json())
   }
 
   addColourToPalette(colourLibraryObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     colourLibraryObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "colours/createForPalette", colourLibraryObject)
+    return this.http.post(this.baseUrl + "/colours/createForPalette", colourLibraryObject)
     .map(res => res.json())
   }
 
   deleteColour(colourLibraryObject) {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     colourLibraryObject.userId = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "colour-libraries/deleteColour", colourLibraryObject)
+    return this.http.post(this.baseUrl + "/colour-libraries/deleteColour", colourLibraryObject)
     .map(res => res.json())
   }
 
   getColourLibrary() {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     let query = {_id: JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "colour-libraries/getByUserId", query)
+    return this.http.post(this.baseUrl + "/colour-libraries/getByUserId", query)
     .map(res => res.json())
   }
 
   getUserPalettes() {
     this.loadToken()
+    let token = localStorage.getItem('token')
+    let headers = new Headers()
+    headers.append('Authorization', `${token}`)
     let query = {createdBy: JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "palettes/getByUserId", query)
+    return this.http.post(this.baseUrl + "/palettes/getByUserId", query)
     .map(res => res.json())
   }
 
