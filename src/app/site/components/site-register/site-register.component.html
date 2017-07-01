@@ -1,0 +1,40 @@
+<div class="main-container">
+  <form #f="ngForm" (ngSubmit)="registerUser(f.value)" class="register-form">
+    <div class="form-row">
+      <label class="form-label" for="firstName">First Name:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="text" name="firstName" placeholder="John" [ngStyle]="applyInputStyle(0)" id="firstName" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="lastName">Last Name:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="text" name="lastName" placeholder="Doe" [ngStyle]="applyInputStyle(1)" id="lastName" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="username">Username:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="text" name="username" placeholder="Username" [ngStyle]="applyInputStyle(2)" id="username" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="email">Email:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="text" name="email" placeholder="john.doe@test.com" [ngStyle]="applyInputStyle(3)" id="email" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="password">Password:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="password" name="password" placeholder="P@$$W0r|)" [ngStyle]="applyInputStyle(4)" id="password" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-button-wrapper">
+        <input class="form-button" type="submit" value="Register" [ngStyle]="applyButtonStyle(0)">
+      </div>
+      <flash-messages></flash-messages>
+    </div>
+  </form>
+</div>

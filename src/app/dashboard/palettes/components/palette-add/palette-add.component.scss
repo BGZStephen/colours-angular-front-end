@@ -1,0 +1,76 @@
+@import "../../sass/_variables.scss";
+
+.main-container {
+  padding: 10px 15px;
+}
+
+.header-container {
+  display: flex;
+}
+
+.main-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-label {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  display: inline-block;
+  font-size: 1.6em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 5px 15px;
+  width: 100%;
+  @media(min-width: 600px) {
+    font-size: 1.8em;
+    width: auto;
+  }
+}
+
+.form-input {
+  border: none;
+  border-bottom: 3px solid #9c56b8;
+  color: #9c56b8;
+  display: inline-block;
+  font-size: 1.6em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  padding: 5px;
+  width: 100%;
+  @media(min-width: 600px) {
+    font-size: 1.8em;
+    width: auto;
+  }
+}
+
+.input-cancel,
+.input-save {
+  border: none;
+  background: #ea4b36;
+  color: $primary-dark-blue;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 900;
+  height: 50px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  width: 50%;
+  @media(min-width: 500px) {
+    margin-top: 10px;
+    margin-right: 5px;
+    width: auto;
+  }
+}
+ .input-save {
+   background: #2c97df;
+ }

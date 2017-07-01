@@ -1,0 +1,257 @@
+@import "../../sass/_variables.scss";
+
+.main-container {
+  padding: 10px 15px;
+}
+
+.header-container {
+  display: flex;
+}
+
+.main-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.output-container {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.colour-library-item {
+  margin-bottom: 10px;
+  padding: 0 5px;
+  width: 50%;
+  @media(min-width: 540px) {
+    width: 33.333%;
+  }
+  @media(min-width: 768px) {
+    width: 25%;
+  }
+  @media(min-width: 1024px) {
+    width: 25%;
+  }
+  @media(min-width: 1280px) {
+    width: 12.5%;
+  }
+  @media(min-width: 1600px) {
+    width: 10%;
+  }
+}
+
+.colour-preview-pane {
+  padding-top: calc(100% - 60px);
+  @media(min-width: 1024px) {
+  }
+}
+
+.colour-library-item-description-container {
+  align-items: center;
+  background: $primary-dark-blue;
+  display: flex;
+  height: 30px;
+}
+
+.colour-library-item-description {
+  color: $primary-white;
+  font-size: 1.2em;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+}
+
+.actions-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.fa-trash, .fa-plus {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  font-size: 1.2em;
+  padding: 6px 0;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+
+.fa-trash:hover, .fa-plus:hover {
+  color: $primary-dark-blue;
+  background: #f3c500;
+}
+
+.add-colour-modal-container,
+.add-to-palette-modal-container{
+  background: white;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.3s ease;
+  width: 100%;
+  z-index: 100;
+}
+
+.add-colour-form-container {
+
+}
+
+.add-colour-header {
+  background: #00be9c;
+  color: $primary-dark-blue;
+}
+
+.add-colour-form {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-colour-label {
+  background: #00be9c;
+  color: $primary-dark-blue;
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 5px 15px
+}
+
+.add-colour-input {
+  border: none;
+  border-bottom: 3px solid #00be9c;
+  color: #00be9c;
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.rgb-input {
+  width: 80px;
+}
+
+.input-cancel,
+.input-save {
+  border: none;
+  background: #ea4b36;
+  color: $primary-dark-blue;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 900;
+  height: 50px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  width: 50%;
+  @media(min-width: 500px) {
+    margin-top: 10px;
+    margin-right: 5px;
+    width: auto;
+  }
+}
+ .input-save {
+   background: #2c97df;
+ }
+
+ .colour-add-row {
+   align-items: center;
+   display: flex;
+   height: 60px;
+ }
+
+.colour-add-preview-header {
+  color: $primary-dark-blue;
+  display: inline-block;
+  font-size: 1.8em;
+  margin-right: 20px;
+}
+
+.colour-add-preview {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+
+.palettes-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.palette {
+  // background: $primary-dark-blue;
+  padding: 5px;
+  width: 100%;
+  @media(min-width: 540px) {
+    width: 50%;
+  }
+  @media(min-width: 768px) {
+    width: 50%;
+  }
+  @media(min-width: 1024px) {
+    width: 33.333%;
+  }
+  @media(min-width: 1280px) {
+    width: 25%;
+  }
+}
+
+.palettes-row {
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.fa-times {
+  margin-right: 20px;
+}
+
+.fa-times:hover {
+  color: darken(red, 10%)
+}
+
+.palette-colour-label {
+  background: #00be9c;
+  color: $primary-dark-blue;
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-left: 20px;
+  margin-right: 10px;
+  padding: 5px 15px
+}
+
+.palette-colour-input {
+  border: none;
+  border-bottom: 3px solid #00be9c;
+  color: #00be9c;
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 700;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.palette-header {
+  color: $primary-dark-blue;
+  font-size: 1.5em;
+  margin-right: 20px;
+}
+
+.palette-name {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  font-size: 1.5em;
+  padding: 10px;
+  width: 100%;
+}

@@ -1,0 +1,23 @@
+@import "../../../sass/_variables.scss";
+
+.main-container {
+  width: 100%;
+}
+
+.notification-bar-container {
+  background: lighten($primary-dark-blue, 3%);
+}
+
+.notification-bar {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.notifications-intro {
+  color: darken($primary-white, 15%);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-right: 10px;
+}

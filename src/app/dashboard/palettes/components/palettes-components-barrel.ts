@@ -1,0 +1,5 @@
+export { PalettesManageComponent } from "./palettes-manage/palettes-manage.component"
+export { PalettesViewComponent } from "./palettes-view/palettes-view.component"
+export { PaletteViewComponent } from "./palette-view/palette-view.component"
+export { PaletteAddComponent } from "./palette-add/palette-add.component"
+export { PaletteEditComponent } from "./palette-edit/palette-edit.component"

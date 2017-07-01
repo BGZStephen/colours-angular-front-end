@@ -1,0 +1,21 @@
+<div class="main-container">
+  <div class="header-container">
+    <h2 class="main-header">Add Palette</h2>
+  </div>
+  <div class="output-container">
+    <form #f="ngForm" (ngSubmit)="createPalette(f.value)" class="palette-add-form">
+      <div class="form-row">
+        <label class="form-label" for="name">Palette Name: </label>
+        <input class="form-input" type="text" placeholder="Colour Palette #1" id="name" #name name="name" ngModel>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="description">Palette Description: </label>
+        <input class="form-input" type="text" placeholder="Palette Description #1" id="description" #description name="description" ngModel>
+      </div>
+      <div class="form-row">
+        <button class="input-cancel" (click)="setComponent('palettes-manage')">Cancel</button>
+        <input type="submit" value="Add" class="input-save">
+      </div>
+    </form>
+  </div>
+</div>

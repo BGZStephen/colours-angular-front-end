@@ -1,0 +1,108 @@
+<div class="main-container">
+  <div class="logo-container">
+    <h1 class="logo">Colours.</h1>
+    <i class="fa fa-bars fa-2x menu-toggle" (click)="menuVisibility = !menuVisibility"></i>
+  </div>
+  <div class="navbar-container" [ngStyle]="setMenuStyle()">
+    <ul class="top-level-list">
+      <li class="top-level-item" (mouseover)="hoverActive = 0" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setActiveSubMenu(-1); clearComponent()" [ngStyle]="hoverActive == 0 ? setHoverStyle(0) : {}">
+          <i class="fa fa-home"></i><p>Home</p>
+        </div>
+      </li>
+      <li class="top-level-item" (mouseover)="hoverActive = 1" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setActiveSubMenu(0)" [ngStyle]="hoverActive == 1 ? setHoverStyle(1) : {}">
+          <i class="fa fa-user"></i><p>Profile</p><i class="fa fa-caret-down"></i>
+        </div>
+        <ul class="second-level-list" [ngStyle]="setSubMenuStyle(0)">
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('profile')">
+              <i class="fa fa-search"></i><p>View Profile</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('profile-edit')">
+              <i class="fa fa-cog"></i><p>Edit Profile</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('profile-password-edit')">
+              <i class="fa fa-lock"></i><p>Change Password</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!-- <li class="top-level-item" (mouseover)="hoverActive = 2" (mouseleave)="hoverActive = -1" >
+        <div class="top-level-content" (click)="setActiveSubMenu(1)" [ngStyle]="hoverActive == 2 ? setHoverStyle(2) : {}">
+          <i class="fa fa-list"></i><p>Projects</p><i class="fa fa-caret-down"></i>
+        </div>
+        <ul class="second-level-list" [ngStyle]="setSubMenuStyle(1)">
+          <li class="second-level-item">
+            <div class="second-level-content">
+              <i class="fa fa-plus"></i><p>Add</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content">
+              <i class="fa fa-search"></i><p>View</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content">
+              <i class="fa fa-cog"></i><p>Manage</p>
+            </div>
+          </li>
+        </ul>
+      </li> -->
+      <li class="top-level-item" (mouseover)="hoverActive = 3" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setActiveSubMenu(1)" [ngStyle]="hoverActive == 3 ? setHoverStyle(3) : {}">
+          <i class="fa fa-paint-brush"></i><p>Palettes</p><i class="fa fa-caret-down"></i>
+        </div>
+        <ul class="second-level-list" [ngStyle]="setSubMenuStyle(1)">
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('palette-add')">
+              <i class="fa fa-plus"></i><p>Add</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('palettes-view')">
+              <i class="fa fa-search"></i><p>View</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('palettes-manage')">
+              <i class="fa fa-cog"></i><p>Manage</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="top-level-item" (mouseover)="hoverActive = 5" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setComponent('colour-library')" [ngStyle]="hoverActive == 5 ? setHoverStyle(5) : {}">
+          <i class="fa fa-th"></i><p>Colour Library</p>
+        </div>
+      </li>
+      <!-- <li class="top-level-item" (mouseover)="hoverActive = 6" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setActiveSubMenu(2)" [ngStyle]="hoverActive == 6 ? setHoverStyle(0) : {}">
+          <i class="fa fa-paint-brush"></i><p>Tools</p><i class="fa fa-caret-down"></i>
+        </div>
+        <ul class="second-level-list" [ngStyle]="setSubMenuStyle(2)">
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('palette-add')">
+              <i class="fa fa-plus"></i><p>RGB to Hex</p>
+            </div>
+          </li>
+          <li class="second-level-item">
+            <div class="second-level-content" (click)="setComponent('palettes-view')">
+              <i class="fa fa-search"></i><p>Hex to RGB</p>
+            </div>
+          </li>
+        </ul>
+      </li> -->
+      <li class="top-level-item logout-item" (mouseover)="hoverActive = 4" (mouseleave)="hoverActive = -1">
+        <div class="top-level-content" (click)="setActiveSubMenu(-1); logout()" [ngStyle]="hoverActive == 4 ? setHoverStyle(4) : {}">
+          <i class="fa fa-power-off"></i><p>Logout</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

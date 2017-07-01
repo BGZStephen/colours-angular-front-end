@@ -1,0 +1,72 @@
+<div class="main-container">
+  <div class="header-container">
+    <h2 class="main-header">Colour Library</h2>
+  </div>
+  <div class="output-container" *ngIf="colourLibrary">
+    <div class="colour-library-item">
+      <div class="colour-library-item-description-container">
+        <p class="colour-library-item-description">Add new Colour</p>
+      </div>
+      <div class="colour-preview-pane" [ngStyle]="{'background': '#369369'}">
+      </div>
+      <div class="actions-container">
+        <i class="fa fa-plus" (click)="toggleModal(1)"></i>
+      </div>
+    </div>
+    <div class="colour-library-item" *ngFor="let colourItem of colourLibrary.colours">
+      <div class="colour-library-item-description-container">
+        <p class="colour-library-item-description">#{{colourItem.hex}}</p>
+      </div>
+      <div class="colour-preview-pane" [ngStyle]="{'background': '#' + colourItem.hex}">
+      </div>
+      <div class="actions-container">
+        <i class="fa fa-plus" (click)="toggleModal(2); setActiveColour(colourItem.hex)" *ngIf="userPalettes"></i>
+        <i class="fa fa-trash" (click)="deleteColour({hex: colourItem.hex})"></i>
+      </div>
+    </div>
+    <div class="add-colour-modal-container" [ngStyle]="activeModalStyle(1)">
+      <div class="add-colour-form-container">
+        <form #f="ngForm" (ngSubmit)="addColour({colourLibraryId: colourLibrary._id, hex: hex.value})" class="add-colour-form">
+          <div class="form-row">
+            <label class="add-colour-label">Hex: </label>
+            <input class="add-colour-input" type="text" placeholder="#369369" ngModel="{{hexConversion}}" id="hex" #hex name="hex" (keyup)="convertHexToRgb(hex.value)">
+          </div>
+          <div class="form-row">
+            <label class="add-colour-label">RGB: </label>
+            <div class="rgb-container">
+              <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.red}}" id="rgbR" #rgbR name="rgbR" (keyup)="setRgbColor('red', rgbR.value); convertRgbToHex()">
+              <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.green}}" id="rgbG" #rgbG name="rgbG" (keyup)="setRgbColor('green', rgbG.value); convertRgbToHex()">
+              <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.blue}}" id="rgbB" #rgbB name="rgbB" (keyup)="setRgbColor('blue', rgbB.value); convertRgbToHex()">
+            </div>
+          </div>
+          <div class="form-row">
+            <a class="input-cancel" (click)="toggleModal(1)">Cancel</a>
+            <input type="submit" value="Add" class="input-save">
+          </div>
+          <div class="colour-add-row">
+            <h3 class="colour-add-preview-header">Colour preview:</h3>
+            <div class="colour-add-preview" [ngStyle]="{'background': '#' + hex.value}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="add-to-palette-modal-container" [ngStyle]="activeModalStyle(2)">
+      <div class="palettes-container" *ngIf="userPalettes">
+        <div class="palettes-row">
+          <i class="fa fa-times fa-2x" (click)="toggleModal(2)"></i>
+          <h3 class="palette-header">Add Colour to Palette</h3>
+        </div>
+        <div class="palettes-row">
+          <div class="colour-add-preview" *ngIf="activeColour" [ngStyle]="{'background': '#' + activeColour}">
+          </div>
+          <label class="palette-colour-label">Description: </label>
+          <input class="palette-colour-input" type="text" placeholder="Colour Description" name="description" #description ngModel>
+        </div>
+        <div class="palette" *ngFor="let palette of userPalettes">
+          <h3 class="palette-name" (click)="addColourToPalette({paletteId: palette._id, hex: activeColour, description: description.value})">{{palette.name}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

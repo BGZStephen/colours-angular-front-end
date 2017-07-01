@@ -1,0 +1,39 @@
+// colors
+
+$primary-white: #FBFAFA;
+$primary-light-blue: #8BA1B5;
+$primary-light-grey: #AEAEAE;
+$primary-dark-blue: #1D1F25;
+$primary-purple: #7A6E8D;
+
+// darker variants
+
+$primary-white--dark: darken(#FBFAFA, 5%);
+$primary-light-blue--dark: darken(#8BA1B5, 5%);
+$primary-light-grey--dark: darken(#AEAEAE, 5%);
+$primary-dark-blue--dark: darken(#1D1F25, 5%);
+$primary-purple--dark: darken(#7A6E8D, 5%);
+
+// extra dark variants
+
+$primary-white--x-dark: darken(#FBFAFA, 10%);
+$primary-light-blue--x-dark: darken(#8BA1B5, 10%);
+$primary-light-grey--x-dark: darken(#AEAEAE, 10%);
+$primary-dark-blue--x-dark: darken(#1D1F25, 10%);
+$primary-purple--x-dark: darken(#7A6E8D, 10%);
+
+// lighter variants
+
+$primary-white--light: lighten(#FBFAFA, 5%);
+$primary-light-blue--light: lighten(#8BA1B5, 5%);
+$primary-light-grey--light: lighten(#AEAEAE, 5%);
+$primary-dark-blue--light: lighten(#1D1F25, 5%);
+$primary-purple--light: lighten(#7A6E8D, 5%);
+
+// extra light variants
+
+$primary-white--x-light: lighten(#FBFAFA, 10%);
+$primary-light-blue--x-light: lighten(#8BA1B5, 10%);
+$primary-light-grey--x-light: lighten(#AEAEAE, 10%);
+$primary-dark-blue--x-light: lighten(#1D1F25, 10%);
+$primary-purple--x-light: lighten(#7A6E8D, 10%);

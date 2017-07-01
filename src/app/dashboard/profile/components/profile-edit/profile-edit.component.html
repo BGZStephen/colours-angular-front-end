@@ -1,0 +1,29 @@
+<div class="main-container">
+  <div class="content-container" *ngIf="user">
+    <div class="header-container">
+      <h2 class="main-header">Profile > Edit</h2>
+    </div>
+    <form #f="ngForm" (ngSubmit)="updateProfile(f.value)" class="profile-form">
+      <div class="input-row">
+        <p class="input-label">First Name:</p>
+        <input type="text" placeholder="First Name" ngModel="{{user.firstName}}" name="firstName" id="firstName" #firstName class="input-description" >
+      </div>
+      <div class="input-row">
+        <p class="input-label">Last Name:</p>
+        <input type="text" placeholder="Last Name" ngModel="{{user.lastName}}" name="lastName" id="lastName" #lastName class="input-description">
+      </div>
+      <div class="input-row">
+        <p class="input-label">Username:</p>
+        <input type="text" placeholder="Username" ngModel="{{user.username}}" name="username" id="username" #username class="input-description">
+      </div>
+      <div class="input-row">
+        <p class="input-label">Email:</p>
+        <input type="text" placeholder="Email" ngModel="{{user.email}}" name="email" id="email" #email class="input-description">
+      </div>
+      <div class="input-row">
+        <button class="input-cancel" (click)="setComponent('profile')">Cancel</button>
+        <input type="submit" value="Save" class="input-save">
+      </div>
+    </form>
+  </div>
+</div>

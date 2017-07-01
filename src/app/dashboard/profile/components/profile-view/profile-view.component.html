@@ -1,0 +1,24 @@
+<div class="main-container">
+  <div class="content-container" *ngIf="user">
+    <div class="header-container">
+      <h2 class="main-header">Profile</h2>
+      <i class="fa fa-pencil" (click)="setComponent('profile-edit')"></i>
+    </div>
+    <div class="output-row">
+      <p class="output-label">First Name:</p>
+      <p class="output-description">{{user.firstName}}</p>
+    </div>
+    <div class="output-row">
+      <p class="output-label">Last Name:</p>
+      <p class="output-description">{{user.lastName}}</p>
+    </div>
+    <div class="output-row">
+      <p class="output-label">Username:</p>
+      <p class="output-description">{{user.username}}</p>
+    </div>
+    <div class="output-row">
+      <p class="output-label">Email:</p>
+      <p class="output-description">{{user.email}}</p>
+    </div>
+  </div>
+</div>

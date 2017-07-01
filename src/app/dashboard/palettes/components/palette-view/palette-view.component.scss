@@ -1,0 +1,262 @@
+@import "../../sass/_variables.scss";
+
+.main-container {
+  padding: 10px 15px;
+}
+
+.header-container {
+  display: flex;
+}
+
+.main-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.output-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.output-left {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    padding: 10px 10px 10px 0px;
+    width: 40%;
+  }
+}
+
+.palette-header-container {
+  width: 100%;
+}
+
+.palette-header,
+.add-colour-header {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  display: inline-block;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  padding: 5px 15px
+}
+
+.palette-description {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  display: inline-block;
+  font-size: 1.4em;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    width: 90%;
+  }
+}
+
+.palette-seperator {
+  border: 3px solid #00be9c;
+  margin: 15px 0 20px 0;
+  width: 100%;
+}
+
+.add-colour-header {
+  background: #00be9c;
+  color: $primary-dark-blue;
+}
+
+.add-colour-form {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-colour-label {
+  background: #00be9c;
+  color: $primary-dark-blue;
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 5px 15px
+}
+
+.add-colour-input {
+  border: none;
+  border-bottom: 3px solid #00be9c;
+  color: #00be9c;
+  display: inline-block;
+  font-size: 1.8em;
+  font-weight: 700;
+  height: 45px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.rgb-input {
+  width: 80px;
+}
+
+.input-cancel,
+.input-save {
+  border: none;
+  background: #ea4b36;
+  color: $primary-dark-blue;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 900;
+  height: 50px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  width: 50%;
+  @media(min-width: 500px) {
+    margin-top: 10px;
+    margin-right: 5px;
+    width: auto;
+  }
+}
+ .input-save {
+   background: #2c97df;
+ }
+
+ .colour-add-row {
+   align-items: center;
+   display: flex;
+   height: 60px;
+ }
+
+.colour-add-preview-header {
+  color: $primary-dark-blue;
+  display: inline-block;
+  font-size: 1.8em;
+  margin-right: 20px;
+}
+
+.colour-add-preview {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+}
+
+
+.output-right {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    width: 60%;
+    padding: 10px 0 10px 10px;
+  }
+}
+
+.palette-items-contaoiner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media(min-width: 1024px) {
+    max-height: calc(100vh - 150px);
+    overflow: scroll;
+  }
+}
+
+.palette-items-contaoiner::-webkit-scrollbar {
+  @media(min-width: 1024px) {
+    display: none;
+  }
+}
+
+.palette-item {
+  align-items: center;
+  background: $primary-dark-blue;
+  display: flex;
+  min-height: 94px;
+  margin: 5px 0;
+  flex-wrap: wrap;
+  padding: 12px;
+  width: 100%;
+}
+
+.palette-colour-preview {
+  background: tomato;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 30px;
+  @media(min-width: 550px) {
+    height: 70px;
+    margin-bottom: 0px;
+    min-height: 40px;
+    width: 70px;
+  }
+}
+
+.palette-item-description-container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  position: relative;
+  width: 100%;
+  @media(min-width: 550px) {
+    margin-bottom: 0px;
+    width: calc(100% - 70px);
+  }
+}
+
+.palette-item-color {
+  color: $primary-white;
+  font-size: 1.2em;
+  font-weight: 900;
+  margin: 5px 0;
+  margin-right: 12px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    display: inline-block;
+    margin: 0;
+    margin-right: 12px;
+    width: auto;
+  }
+}
+
+.palette-item-description {
+  color: $primary-white;
+  font-size: 1.2em;
+  font-weight: 900;
+  width: 100%;
+  @media(min-width: 1024px) {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+.palette-item-actions-container {
+  opacity: 0;
+  position: absolute;
+  right: 0px;
+  transition: opacity 0.3s ease;
+}
+
+.palette-item:hover .palette-item-actions-container {
+  opacity: 1;
+}
+
+.action-delete {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  cursor: pointer;
+  font-size: 1.4em;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.action-delete:hover {
+  color: darken(red, 10%);
+}

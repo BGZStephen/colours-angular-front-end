@@ -1,0 +1,64 @@
+@import "../../../sass/_variables.scss";
+
+.main-container {
+  background: url("/assets/images/colours-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.content-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    margin: 0 auto;
+    padding-left: 40px;
+    width: 60%;
+  }
+}
+
+h1 {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  display: inline-block;
+  font-size: 2.5em;
+  margin-bottom: 5px;
+  padding: 10px 25px;
+  text-align: center;
+  width: auto;
+  @media(min-width: 768px) {
+    font-size: 4em;
+    margin-bottom: 30px;
+    padding: 10px 25px;
+    text-align: left;
+  }
+  @media(min-width: 1024px) {
+    font-size: 6em;
+  }
+}
+
+p {
+  color: $primary-white;
+  display: inline-block;
+  font-size: 1.4em;
+  font-weight: 700;
+  background: $primary-dark-blue;
+  margin: 5px 0;
+  padding: 10px 25px;
+  @media(min-width: 768px) {
+    font-size: 1.7em;
+  }
+  @media(min-width: 1024px) {
+    font-size: 2em;
+  }
+}

@@ -1,0 +1,61 @@
+<div class="main-container">
+  <div class="header-container">
+    <h2 class="main-header">Palette</h2>
+  </div>
+  <div class="output-container" *ngIf="palette">
+    <div class="output-left">
+      <div class="palette-header-container">
+        <h2 class="palette-header">{{palette.name}}</h2>
+      </div>
+      <div class="palette-description-container">
+        <p class="palette-description">{{palette.description}}</p>
+      </div>
+      <hr class="palette-seperator">
+      <div class="add-colour-header-container">
+        <h2 class="add-colour-header">Add Colour</h2>
+      </div>
+      <form #f="ngForm" (ngSubmit)="addPaletteItem({paletteId: palette._id, hex: hex.value, description: description.value})" class="add-colour-form">
+        <div class="form-row">
+          <label class="add-colour-label">Hex: </label>
+          <input class="add-colour-input" type="text" placeholder="#369369" ngModel="{{hexConversion}}" id="hex" #hex name="hex" (keyup)="convertHexToRgb(hex.value)">
+        </div>
+        <div class="form-row">
+          <label class="add-colour-label">RGB: </label>
+          <div class="rgb-container">
+            <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.red}}" id="rgbR" #rgbR name="rgbR" (keyup)="setRgbColor('red', rgbR.value); convertRgbToHex()">
+            <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.green}}" id="rgbG" #rgbG name="rgbG" (keyup)="setRgbColor('green', rgbG.value); convertRgbToHex()">
+            <input class="add-colour-input rgb-input" type="text" placeholder="255" ngModel="{{rgbConversion.blue}}" id="rgbB" #rgbB name="rgbB" (keyup)="setRgbColor('blue', rgbB.value); convertRgbToHex()">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="add-colour-label">Description: </label>
+          <input class="add-colour-input" type="text" placeholder="Colour Description" name="description" #description ngModel>
+        </div>
+        <div class="form-row">
+          <input type="submit" value="Add" class="input-save">
+        </div>
+        <hr class="palette-seperator">
+        <div class="colour-add-row">
+          <h3 class="colour-add-preview-header">Colour preview:</h3>
+          <div class="colour-add-preview" [ngStyle]="{'background': '#' + hex.value}">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="output-right">
+      <div class="palette-items-contaoiner">
+        <div class="palette-item" *ngFor="let paletteItem of palette.paletteItems">
+          <div class="palette-colour-preview" [ngStyle]="{'background': '#' + paletteItem.colour.hex}">
+          </div>
+          <div class="palette-item-description-container">
+            <p class="palette-item-color">#{{paletteItem.colour.hex}}</p>
+            <p class="palette-item-description">{{paletteItem.description}}</p>
+            <div class="palette-item-actions-container">
+              <i class="fa fa-trash action-delete" (click)="deletePaletteItem({paletteId: palette._id, paletteItemId: paletteItem._id})"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

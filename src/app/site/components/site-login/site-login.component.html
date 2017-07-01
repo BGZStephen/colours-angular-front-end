@@ -1,0 +1,22 @@
+<div class="main-container">
+  <form #f="ngForm" (ngSubmit)="login(f.value)" class="login-form">
+    <div class="form-row">
+      <label class="form-label" for="username">Email:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="text" name="email" placeholder="Email" [ngStyle]="applyInputStyle(0)" id="email" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="password">Password:</label>
+      <div class="form-input-wrapper">
+        <input class="form-input" type="password" name="password" placeholder="P@$$W0r|)" [ngStyle]="applyInputStyle(1)" id="password" ngModel>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-button-wrapper">
+        <input type="submit" class="form-button" value="Login" [ngStyle]="applyButtonStyle(0)">
+      </div>
+      <flash-messages></flash-messages>
+    </div>
+  </form>
+</div>

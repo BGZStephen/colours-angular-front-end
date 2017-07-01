@@ -1,0 +1,86 @@
+@import "../../sass/_variables.scss";
+
+.main-container {
+  padding: 10px 15px;
+}
+
+.header-container {
+  display: flex;
+}
+
+.main-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.palettes-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.palette-header-container {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+  width: auto;
+}
+
+.palette-header {
+  background: $primary-dark-blue;
+  color: $primary-white;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+}
+
+.palette-output-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: -4px;
+  width: 100%;
+}
+
+.palette-item {
+  background: $primary-dark-blue;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 4px;
+  width: calc(33% - 8px);
+  @media(min-width: 600px) {
+    width: calc(25% - 8px);
+  }
+  @media(min-width: 1024px) {
+    width: calc(12.5% - 8px);
+  }
+}
+
+.palette-item-color-display {
+  background: #369;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100%;
+  width: 100%;
+}
+
+.palette-item-description {
+  background: lighten($primary-dark-blue, 6%);
+  color: $primary-white;
+  // display: none;
+  padding: 5px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    display: inline;
+  }
+}

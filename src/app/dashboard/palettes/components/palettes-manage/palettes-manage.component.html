@@ -1,0 +1,23 @@
+<div class="main-container">
+  <div class="header-container">
+    <h2 class="main-header">Palettes > Manage</h2>
+  </div>
+  <div class="palettes-container" *ngIf="userPalettes">
+    <div class="palette" *ngFor="let palette of userPalettes">
+      <div class="palette-header-container">
+        <h2 class="palette-header" (click)="setPalette(palette._id)">{{palette.name}}</h2>
+        <i class="fa fa-pencil" (click)="setPalette(palette._id)"></i>
+        <i class="fa fa-trash" (click)="deletePalette(palette._id)"></i>
+      </div>
+      <div class="palette-output-container" *ngIf="palette.paletteItems">
+        <div class="palette-item" *ngFor="let paletteItem of palette.paletteItems | slice:0:8">
+          <div class="palette-item-color-display" [ngStyle]="{'background': '#' + paletteItem.colour.hex}">
+          </div>
+          <div class="palette-item-description">
+            <p>#{{paletteItem.colour.hex}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+@import "../../../sass/_variables.scss";
+
+.main-container {
+  background: url("/assets/images/colours-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 20px;
+  width: 100%;
+}
+
+
+.register-form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  padding: 8px;
+  width: 100%;
+  @media(min-width: 1024px) {
+    margin: 0 auto;
+    padding-left: 40px;
+    width: 60%;
+  }
+}
+
+.form-row {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 3px 0;
+  width: 100%;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.form-label{
+  background: $primary-white;
+  color: $primary-dark-blue;
+  font-size: 1.5em;
+  font-weight: 900;
+  margin-right: 5px;
+  padding: 5px 10px;
+  width: 100%;
+  @media (min-width: 768px) {
+    font-size: 2em;
+    width: auto;
+  }
+}
+
+.form-input-wrapper {
+  background: $primary-dark-blue;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: auto;
+  }
+}
+
+.form-input {
+  background: $primary-dark-blue;
+  border: none;
+  border-bottom: 3px solid $primary-white;
+  color: $primary-white;
+  font-size: 1.5em;
+  font-weight: 900;
+  width: 100%;
+  @media (min-width: 768px) {
+    font-size: 2em;
+    width: auto;
+  }
+}
+
+.form-input::placeholder {
+  color: $primary-white;
+}
+
+.form-button-wrapper {
+  background: $primary-dark-blue;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 6px;
+}
+
+.form-button {
+  background: $primary-dark-blue;
+  border: none;
+  color: $primary-dark-blue;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 900;
+  padding: 5px 10px;
+  @media(min-width: 768px) {
+    font-size: 2em;
+  }
+}
