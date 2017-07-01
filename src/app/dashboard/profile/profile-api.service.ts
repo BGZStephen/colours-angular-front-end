@@ -36,8 +36,10 @@ export class ProfileApiService {
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     userObject._id = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/users/update", userObject, {headers: headers})
-    .map(res => res.json())
+
+    // set type object to reflect a profile update
+    userObject.type = "profile"
+    return this.http.put(this.baseUrl + `/users/${userObject._id}`, userObject, {headers: headers})
   }
 
   updatePassword(userObject) {
@@ -46,8 +48,10 @@ export class ProfileApiService {
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     userObject._id = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/users/updatePassword", userObject, {headers: headers})
-    .map(res => res.json())
+
+    // set type object to reflect a password update
+    userObject.type = "password"
+    return this.http.put(this.baseUrl + `/users/${userObject._id}`, userObject, {headers: headers})
   }
 
 }

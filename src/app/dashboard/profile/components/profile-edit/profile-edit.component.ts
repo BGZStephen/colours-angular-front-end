@@ -36,13 +36,12 @@ export class ProfileEditComponent implements OnInit {
   updateProfile(userObject) {
     this.profileApiService.updateProfile(userObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show("Profile updated successfuly", {cssClass: "flash-success--dashboard", timeout: 3000})
-        this.loadUser()
-        this.setComponent('profile')
-      } else {
-        this.flashMessage.show("Failed to update profile", {cssClass: "flash-failure--dashboard", timeout: 3000})
-      }
+      this.flashMessage.show("Profile updated successfuly", {cssClass: "flash-success--dashboard", timeout: 3000})
+      this.loadUser()
+      this.setComponent('profile')
+    },
+    error => {
+      this.flashMessage.show("Failed to update profile", {cssClass: "flash-failure--dashboard", timeout: 3000})
     })
   }
 }

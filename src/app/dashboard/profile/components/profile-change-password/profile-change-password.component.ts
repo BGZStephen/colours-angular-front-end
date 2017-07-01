@@ -29,12 +29,11 @@ export class ProfileChangePasswordComponent implements OnInit {
     } else {
       this.profileApiService.updatePassword(userObject)
       .subscribe(res => {
-        if(res.success) {
-          this.flashMessage.show(res.message, {cssClass: "flash-success--dashboard", timeout: 3000})
-          this.clearComponent()
-        } else {
-          this.flashMessage.show(res.message, {cssClass: "flash-failure--dashboard", timeout: 3000})
-        }
+        this.flashMessage.show("Password updated successfully", {cssClass: "flash-success--dashboard", timeout: 3000})
+        this.clearComponent()
+      },
+      error => {
+        this.flashMessage.show(error, {cssClass: "flash-failure--dashboard", timeout: 3000})
       })
     }
   }
