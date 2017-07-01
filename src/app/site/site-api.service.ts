@@ -10,12 +10,13 @@ export class SiteApiService {
   ) { }
 
   coloursApiUrl: String = environment.coloursApiUrl
+  siteAuthToken: String = environment.siteAuthToken
 
   authenticate(userObject) {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    return this.http.post(this.coloursApiUrl + "/users/authenticate", userObject)
+    return this.http.post(`${this.coloursApiUrl}/users/authenticate?siteAuthToken=${this.siteAuthToken}`, userObject)
     .map(res => res.json())
   }
 
@@ -23,7 +24,7 @@ export class SiteApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    return this.http.post(this.coloursApiUrl + "/users", userObject)
+    return this.http.post(`${this.coloursApiUrl}/users?siteAuthToken=${this.siteAuthToken}`, userObject)
     .map(res => res.json())
   }
 
