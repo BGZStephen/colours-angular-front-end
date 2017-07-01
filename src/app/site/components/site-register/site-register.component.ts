@@ -62,14 +62,13 @@ export class SiteRegisterComponent implements OnInit {
     if(this.validate(userObject)) {
       this.siteApiService.registerUser(userObject)
       .subscribe(res => {
-        if(res.success) {
           this.flashMessage.show("Regisrtation successful", {cssClass: "flash-success", timeout: 2000})
           setTimeout(()=>{ // redirect after flash message to show registration successful
             this.setComponent('login')
           },2500);
-        } else {
-          this.flashMessage.show(res.message, {cssClass: "flash-failure", timeout: 2000})
-        }
+      },
+      error => {
+        this.flashMessage.show(error.statusText, {cssClass: "flash-failure", timeout: 2000})
       })
     }
   }

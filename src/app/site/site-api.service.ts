@@ -17,7 +17,7 @@ export class SiteApiService {
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     return this.http.post(`${this.coloursApiUrl}/users/authenticate?siteAuthToken=${this.siteAuthToken}`, userObject)
-    .map(res => res.json())
+    .map((res:any) => res.json())
   }
 
   registerUser(userObject) {
@@ -25,7 +25,6 @@ export class SiteApiService {
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     return this.http.post(`${this.coloursApiUrl}/users?siteAuthToken=${this.siteAuthToken}`, userObject)
-    .map(res => res.json())
   }
 
   storeToken(userObject) {

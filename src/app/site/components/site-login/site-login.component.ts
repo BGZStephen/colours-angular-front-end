@@ -59,15 +59,14 @@ export class SiteLoginComponent implements OnInit {
   login(userObject) {
     this.siteApiService.authenticate(userObject)
     .subscribe(res => {
-      if(res.success) {
         this.siteApiService.storeToken(res)
         this.flashMessage.show("Login successful", {cssClass: "flash-success", timeout: 1500})
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
         }, 2000)
-      } else {
-        this.flashMessage.show(res.message, {cssClass: "flash-failure", timeout: 2000})
-      }
+    },
+    error => {
+      this.flashMessage.show(error.statusText, {cssClass: "flash-failure", timeout: 2000})
     })
   }
 
