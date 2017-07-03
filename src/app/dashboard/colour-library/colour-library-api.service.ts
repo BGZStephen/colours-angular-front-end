@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http"
+import { Http, Headers } from "@angular/http"
 import { environment } from "../../../environments/environment"
 
 @Injectable()
@@ -43,8 +43,8 @@ export class ColourLibraryApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    colourLibraryObject.userId = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/colour-libraries/deleteColour", colourLibraryObject)
+    colourLibraryObject._id = JSON.parse(this.user).colourLibraryId
+    return this.http.put(this.baseUrl + `/colour-libraries/${colourLibraryObject._id}`, colourLibraryObject, {headers: headers})
     .map(res => res.json())
   }
 
@@ -53,8 +53,8 @@ export class ColourLibraryApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    let query = {_id: JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "/colour-libraries/getByUserId", query)
+    let query = {_id: JSON.parse(this.user).colourLibraryId}
+    return this.http.get(this.baseUrl + `/colour-libraries/${query._id}`, {headers: headers})
     .map(res => res.json())
   }
 
