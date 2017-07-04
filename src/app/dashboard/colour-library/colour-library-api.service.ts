@@ -24,17 +24,18 @@ export class ColourLibraryApiService {
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     colourLibraryObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/colours/createForLibrary", colourLibraryObject)
-    .map(res => res.json())
+    colourLibraryObject.type = "library"
+    return this.http.post(this.baseUrl + "/colours", colourLibraryObject, {headers: headers})
   }
 
-  addColourToPalette(colourLibraryObject) {
+  addColourToPalette(colourPaletteObject) {
     this.loadToken()
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    colourLibraryObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/colours/createForPalette", colourLibraryObject)
+    colourPaletteObject.createdBy = JSON.parse(this.user)._id
+    colourPaletteObject.type = "palette"
+    return this.http.post(this.baseUrl + "/colours", colourPaletteObject, {headers: headers})
     .map(res => res.json())
   }
 

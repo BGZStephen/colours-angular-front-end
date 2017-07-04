@@ -35,13 +35,12 @@ export class ColourLibraryViewComponent implements OnInit {
   addColour(colourLibraryObject) {
     this.colourLibraryApiService.addColour(colourLibraryObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show(res.message, {cssClass: "flash-success--dashboard", timeout: 2000})
-        this.activeModal = -1
-        this.loadColourLibrary()
-      } else {
-        this.flashMessage.show(res.message, {cssClass: "flash-failure--dashboard", timeout: 2000})
-      }
+      this.flashMessage.show("Colour added successfully", {cssClass: "flash-success--dashboard", timeout: 2000})
+      this.activeModal = -1
+      this.loadColourLibrary()
+    },
+    error => {
+      this.flashMessage.show(error.statusText, {cssClass: "flash-failure--dashboard", timeout: 2000})
     })
   }
 
