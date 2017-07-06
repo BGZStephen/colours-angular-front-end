@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 import { PalettesApiService } from "../../palettes-api.service"
+import { FlashMessagesService } from "angular2-flash-messages"
 
 @Component({
   selector: 'app-palettes-view',
@@ -10,6 +11,7 @@ import { PalettesApiService } from "../../palettes-api.service"
 export class PalettesViewComponent implements OnInit {
 
   constructor(
+    private flashMessage: FlashMessagesService,
     private router: Router,
     private palettesApiService: PalettesApiService
   ) { }
@@ -23,11 +25,11 @@ export class PalettesViewComponent implements OnInit {
   loadUserPalettes() {
     this.palettesApiService.getPalettesByUserId()
     .subscribe(res => {
-      if(res.success == false) {
-        this.userPalettes = [];
-      } else {
-        this.userPalettes = res;
-      }
+      this.userPalettes = res
+    },
+    error => {
+      console.log(error)
+      this.flashMessage.show("Something went wrong loading palettes", {cssClass: "flash-success--dashboard", timeout: 3000})
     })
   }
 
