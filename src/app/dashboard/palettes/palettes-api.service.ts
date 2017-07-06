@@ -13,27 +13,26 @@ export class PalettesApiService {
   baseUrl: string = environment.coloursApiUrl
 
   addPaletteItem(paletteObject) {
-    this.loadToken()
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    paletteObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/colours/createForPalette", paletteObject, {headers: headers})
+    paletteObject.createdBy = JSON.parse(this.user)._id,
+    paletteObject.type = "palette"
+    return this.http.post(this.baseUrl + "/colours", paletteObject, {headers: headers})
     .map(res => res.json())
   }
 
   deletePaletteItem(paletteObject) {
-    this.loadToken()
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
     paletteObject.createdBy = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/colours/deleteFromPalette", paletteObject, {headers: headers})
+    paletteObject.type = "palette"
+    return this.http.put(this.baseUrl + "/colours/deleteFromPalette", paletteObject, {headers: headers})
     .map(res => res.json())
   }
 
   createPalette(paletteObject) {
-    this.loadToken()
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
@@ -43,12 +42,10 @@ export class PalettesApiService {
   }
 
   deletePalette(paletteObject) {
-    this.loadToken()
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    paletteObject.userId = JSON.parse(this.user)._id
-    return this.http.post(this.baseUrl + "/palettes/deleteOne", paletteObject, {headers: headers})
+    return this.http.delete(this.baseUrl + `/palettes/${paletteObject._id}`, {headers: headers})
     .map(res => res.json())
   }
 
@@ -56,8 +53,7 @@ export class PalettesApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    paletteObject.type = "id"
-    return this.http.post(this.baseUrl + "/palettes", paletteObject, {headers: headers})
+    return this.http.get(this.baseUrl + `/palettes?_id=${paletteObject._id}`, {headers: headers})
     .map(res => res.json())
   }
 
@@ -66,8 +62,8 @@ export class PalettesApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    let userObject = {createdBy: JSON.parse(this.user)._id, type: "userId"}
-    return this.http.post(this.baseUrl + `/palettes/${userObject.createdBy}`, userObject, {headers: headers})
+    let userId = JSON.parse(this.user)._id
+    return this.http.get(this.baseUrl + `/palettes?userId=${userId}`, {headers: headers})
     .map(res => res.json())
   }
 
