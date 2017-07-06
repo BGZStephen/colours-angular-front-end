@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 import { PalettesApiService } from "../../palettes-api.service"
+import { FlashMessagesService } from "angular2-flash-messages"
 
 @Component({
   selector: 'app-palettes-manage',
@@ -10,6 +11,7 @@ import { PalettesApiService } from "../../palettes-api.service"
 export class PalettesManageComponent implements OnInit {
 
   constructor(
+    private flashMessage: FlashMessagesService,
     private router: Router,
     private palettesApiService: PalettesApiService
   ) {}
@@ -24,7 +26,11 @@ export class PalettesManageComponent implements OnInit {
     let paletteObject = {_id: paletteId}
     this.palettesApiService.deletePalette(paletteObject)
     .subscribe(res => {
+      this.flashMessage.show("Palette deleted successfully", {cssClass: "flash-success--dashboard", timeout: 3000})
       this.loadUserPalettes()
+    },
+    error => {
+      this.flashMessage.show("Palette deletion failed", {cssClass: "flash-failure--dashboard", timeout: 3000})
     })
   }
 
@@ -39,11 +45,10 @@ export class PalettesManageComponent implements OnInit {
   loadUserPalettes() {
     this.palettesApiService.getPalettesByUserId()
     .subscribe(res => {
-      if(res.success == false) {
-        this.userPalettes = [];
-      } else {
-        this.userPalettes = res;
-      }
+      this.userPalettes = res;
+    },
+    error => {
+      this.flashMessage.show("Error loading palettes", {cssClass: "flash-failure--dashboard", timeout: 3000})
     })
   }
 

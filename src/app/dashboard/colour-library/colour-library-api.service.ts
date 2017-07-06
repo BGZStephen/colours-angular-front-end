@@ -36,7 +36,6 @@ export class ColourLibraryApiService {
     colourPaletteObject.createdBy = JSON.parse(this.user)._id
     colourPaletteObject.type = "palette"
     return this.http.post(this.baseUrl + "/colours", colourPaletteObject, {headers: headers})
-    .map(res => res.json())
   }
 
   deleteColour(colourLibraryObject) {
@@ -46,7 +45,6 @@ export class ColourLibraryApiService {
     headers.append('Authorization', `${token}`)
     colourLibraryObject._id = JSON.parse(this.user).colourLibraryId
     return this.http.put(this.baseUrl + `/colour-libraries/${colourLibraryObject._id}`, colourLibraryObject, {headers: headers})
-    .map(res => res.json())
   }
 
   getColourLibrary() {
@@ -64,8 +62,8 @@ export class ColourLibraryApiService {
     let token = localStorage.getItem('token')
     let headers = new Headers()
     headers.append('Authorization', `${token}`)
-    let query = {createdBy: JSON.parse(this.user)._id}
-    return this.http.post(this.baseUrl + "/palettes/getByUserId", query)
+    let userId = JSON.parse(this.user)._id
+    return this.http.get(this.baseUrl + `/palettes?userId=${userId}`, {headers: headers})
     .map(res => res.json())
   }
 

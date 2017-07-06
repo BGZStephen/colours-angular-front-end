@@ -24,6 +24,7 @@ export class ColourLibraryViewComponent implements OnInit {
     this.convertRgbToHex()
     this.getUserPalettes()
   }
+
   activeModalStyle(index) {
     if(index == this.activeModal) {
       return {"opacity": "1", "min-height": "calc(100vh - 120px)", "max-height": "200vh"}
@@ -47,37 +48,32 @@ export class ColourLibraryViewComponent implements OnInit {
   addColourToPalette(colourLibraryObject) {
     this.colourLibraryApiService.addColourToPalette(colourLibraryObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show(res.message, {cssClass: "flash-success--dashboard", timeout: 2000})
-        this.activeModal = -1
-        this.loadColourLibrary()
-      } else {
-        this.flashMessage.show(res.message, {cssClass: "flash-failure--dashboard", timeout: 2000})
-      }
+      this.flashMessage.show("Colour added successfuly", {cssClass: "flash-success--dashboard", timeout: 2000})
+      this.activeModal = -1
+      this.loadColourLibrary()
+    },
+    error => {
+      this.flashMessage.show("Colour addition failed", {cssClass: "flash-failure--dashboard", timeout: 2000})
     })
   }
 
   deleteColour(colourLibraryObject) {
     this.colourLibraryApiService.deleteColour(colourLibraryObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show(res.message, {cssClass: "flash-success--dashboard", timeout: 2000})
+        this.flashMessage.show("Colour deleted successfully", {cssClass: "flash-success--dashboard", timeout: 2000})
         this.activeModal = -1
         this.loadColourLibrary()
-      } else {
-        this.flashMessage.show(res.message, {cssClass: "flash-failure--dashboard", timeout: 2000})
-      }
+    },
+    error => {
+      this.flashMessage.show("Colour deletion failed", {cssClass: "flash-failure--dashboard", timeout: 2000})
     })
   }
 
   getUserPalettes() {
     this.colourLibraryApiService.getUserPalettes()
     .subscribe(res => {
-      if(res.success == false) {
-
-      } else {
-        this.userPalettes = res;
-      }
+      console.log(res)
+      this.userPalettes = res;
     })
   }
 

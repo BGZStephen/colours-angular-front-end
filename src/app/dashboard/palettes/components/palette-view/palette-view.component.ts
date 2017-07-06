@@ -30,12 +30,11 @@ export class PaletteViewComponent implements OnInit {
   addPaletteItem(paletteObject) {
     this.palettesApiService.addPaletteItem(paletteObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show("Palette item added", {cssClass: "flash-success--dashboard", timeout: 3000})
-        this.loadPalette()
-      } else {
-        this.flashMessage.show("Palette item addition failed", {cssClass: "flash-failure--dashboard", timeout: 3000})
-      }
+      this.flashMessage.show("Palette item added", {cssClass: "flash-success--dashboard", timeout: 3000})
+      this.loadPalette()
+    },
+    error => {
+      this.flashMessage.show("Palette item addition failed", {cssClass: "flash-failure--dashboard", timeout: 3000})
     })
   }
 
@@ -64,19 +63,17 @@ export class PaletteViewComponent implements OnInit {
       this.rgbConversion.green = greenHex
       let blueHex = parseInt(hexValue.substr(4, 2), 16)
       this.rgbConversion.blue = blueHex
-
     }
   }
 
   deletePaletteItem(paletteObject) {
     this.palettesApiService.deletePaletteItem(paletteObject)
     .subscribe(res => {
-      if(res.success) {
-        this.flashMessage.show("Palette item deleted", {cssClass: "flash-success--dashboard", timeout: 3000})
-        this.loadPalette()
-      } else {
-        this.flashMessage.show("Palette item deletion failed", {cssClass: "flash-failure--dashboard", timeout: 3000})
-      }
+      this.flashMessage.show("Palette item deleted", {cssClass: "flash-success--dashboard", timeout: 3000})
+      this.loadPalette()
+    },
+    error => {
+      this.flashMessage.show("Palette item deletion failed", {cssClass: "flash-failure--dashboard", timeout: 3000})
     })
   }
 
@@ -88,6 +85,9 @@ export class PaletteViewComponent implements OnInit {
       this.palettesApiService.getPaletteById(paletteObject)
       .subscribe(res => {
         this.palette = res
+      },
+      error => {
+        this.flashMessage.show("Error loading palette", {cssClass: "flash-failure--dashboard", timeout: 3000})
       })
     })
   }
